@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <article class="mw8 center pa3 pa4-l mb3 mb4-l bg-white br0 br3-ns card">
+    <div class="measure-wide-l f4 lh-copy nested-copy-line-height nested-links">
+      <p>{{ i18n "taxonomyTerm" . }}</p>
+    </div>
+  </article>
+  <div class="mw8 center">
+    <section>
+      {{ range .Pages }}
+        <div class="relative w-100 mb3 mb4-l bg-white br0 br3-ns card">
+          {{ partial "summary.html" . }}
+        </div>
+      {{ end }}
+    </section>
+  </div>
+{{ end }}

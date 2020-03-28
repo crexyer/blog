@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <div class="mw8 center">
+    {{ with .Content}}
+    <section class="nested-article-line-height w-100 ma0 pa3 pa4-l f4 lh-copy nested-links bg-white br0 br3-ns card">
+      {{ . }}
+    </section>
+    {{ end }}
+    {{ with .Paginator.Pages }}
+    <section class="nested-copy-line-height mt3 mt4-l">
+      {{ range . }}
+        <div class="relative mb3 mb4-l bg-white br0 br3-ns card">
+          {{- partial "summary.html" . -}}
+        </div>
+      {{ end }}
+    </section>
+    {{ end }}
+    {{- template "_internal/pagination.html" . -}}
+  </div>
+{{ end }}

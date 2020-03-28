@@ -1,0 +1,49 @@
+{{ define "main" }}
+  <div class="mw8 center">
+    {{ with .Content }}
+    <article class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray">
+      {{ . }}
+    </article>
+    {{ end }}
+    {{/* Define a section to pull recent posts from. For Hugo 0.20 this will default to the section with the most number of pages. */}}
+    {{ $mainSections := .Site.Params.mainSections | default (slice "post") }}
+    {{/* Create a variable with that section to use in multiple places. */}}
+    {{ $section := where .Site.RegularPages "Section" "in" $mainSections }}
+    {{/* Check to see if the section is defined for ranging through it */}}
+    {{ $section_count := len $section }}
+    {{ if ge $section_count 1 }}
+      {{/* Derive the section name  */}}
+      {{ $section_name := index (.Site.Params.mainSections) 0 }}
+
+      <div class="w-100">
+        {{/* Use $section_name to get the section title. Use "with" to only show it if it exists */}}
+        {{ with .Site.GetPage "section" $section_name }}
+            <h1 class="mv4 mh3 mh4-l">
+              {{ $.Param "recent_copy" | default (i18n "recentTitle" .) }}
+            </h1>
+          {{ end }}
+
+        {{ $n_posts := $.Param "recent_posts_number" | default 3 }}
+
+        <section class="w-100 center">
+          {{/* Range through the first $n_posts items of the section */}}
+          {{ range (first $n_posts $section) }}
+            <div class="relative mb3 mb4-l bg-white br0 br3-ns card">
+              {{ partial "summary-with-image.html" . }}
+            </div>
+          {{ end }}
+        </section>
+
+        {{ if ge $section_count (add $n_posts 1) }}
+          {{/* As above, Use $section_name to get the section title, and URL. Use "with" to only show it if it exists */}}
+          {{ with .Site.GetPage "section" $section_name }}
+            <div class="mv3 mv4-l mh3 mh4-l">
+              <a href="{{ .Permalink }}" class="ba b--dark-gray bg-gray br2 white dib f5 hover-bg-dark-gray ph3 pv2 bg-animate no-underline">{{ i18n "allTitle" . }}</a>
+            </div>
+          {{ end }}
+        {{ end }}
+
+        </div>
+    {{ end }}
+  </div>
+{{ end }}

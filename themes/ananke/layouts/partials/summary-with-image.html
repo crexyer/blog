@@ -1,0 +1,30 @@
+{{ $featured_image := .Params.featured_image }}
+<div class="relative w-100 nested-copy-line-height">
+  <div class="pa3 pa4-l gray overflow-hidden">
+    {{ if .Params.featured_image }}
+        {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
+      {{ $featured_image := (trim $featured_image "/") | absURL }}
+      <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+        <a href="{{.Permalink}}" class="db grow">
+          <img src="{{ $featured_image }}" class="img" alt="image from {{ .Title }}">
+        </a>
+      </div>
+    {{ end }}
+    <div class="blah w-100{{ if .Params.featured_image }} w-60-ns pl3-ns{{ end }}">
+      <time class="f6 db tracked" {{ printf "datetime=%q" (.Date.Format "2006-01-02T15:04:05Z07:00") | safeHTMLAttr }}>
+        {{- .Date.Format "2006-01-02" -}}
+      </time>
+      <h1 class="f3 near-black">
+        <a href="{{.Permalink}}" class="link color-inherit hover-silver">
+          {{ .Title }}
+          </a>
+      </h1>
+      <div class="f5 f4-l lh-copy nested-copy-line-height nested-links">
+        {{ .Summary }}
+      </div>
+      <a href="{{.Permalink}}" class="ba b--moon-gray bg-light-gray br2 black dib f5 hover-bg-moon-gray mt2 ph3 pv2 bg-animate no-underline">{{ $.Param "read_more_copy" | default (i18n "readMore") }}</a>
+      {{/* TODO: add author
+      <p class="f5 lh-copy mv0">By {{ .Author }}</p> */}}
+    </div>
+  </div>
+</div>

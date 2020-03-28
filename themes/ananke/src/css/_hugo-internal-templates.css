@@ -1,0 +1,91 @@
+/* pagination.html: https://github.com/spf13/hugo/blob/master/tpl/tplimpl/template_embedded.go#L117 */
+
+.pagination {
+  margin: 3rem 0;
+}
+
+.pagination li {
+  display: inline-block;
+  margin-right: .375rem;
+  font-size: .875rem;
+  margin-bottom: 2.5em;
+}
+
+.pagination li a {
+  padding: .5rem .625rem;
+  background-color: white;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.pagination li.disabled {
+  display: none;
+}
+
+.pagination li.active a:link,
+.pagination li.active a:active,
+.pagination li.active a:visited {
+  background-color: #ddd;
+}
+
+.card {
+  box-shadow:0px 0px 8px rgba(0,0,0,0.05);
+}
+
+@media screen and (max-width: 84em) {
+  .sidebar {
+    display: none;
+    background-color: red;
+  }
+}
+
+.nested-article-line-height p,
+.nested-article-line-height ul,
+.nested-article-line-height ol {
+  line-height: 1.75;
+}
+
+article table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+article table th,
+article table td {
+  padding: .5rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+article table tbody tr:last-child th,
+article table tbody tr:last-child td {
+  border-bottom: 1px solid #dee2e6;
+}
+
+article table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+#TableOfContents a {
+  display: block;
+}
+
+#TableOfContents ul {
+  margin-bottom: 0;
+}
+
+#TableOfContents ul li {
+  margin-bottom: 0;
+}
+
+#TableOfContents ul li a{
+  padding-top: 0.125em;
+  padding-bottom: 0.125em;
+}
+
+#TableOfContents ul li ul li a{
+  padding-left: 1.5em;
+}

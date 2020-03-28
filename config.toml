@@ -1,0 +1,41 @@
+baseURL = "https://www.crexyer.com/"
+languageCode = "zh-cn"
+title = "Crexyer's Blog"
+theme = "ananke"
+
+DefaultContentLanguage = "zh"
+hasCJKLanguage = true
+SectionPagesMenu = "main"
+googleAnalytics = "UA-84999825-1"
+
+[related]
+  threshold = 80
+  includeNewer = true
+  toLower = false
+  [[related.indices]]
+    name = "tags"
+    weight = 100
+  [[related.indices]]
+    name = "date"
+    weight = 10
+    
+[permalinks]
+  posts = "/:year/:month/:slug/"
+
+[markup]
+  [markup.highlight]
+    style = "perldoc"
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+# https://pixabay.com/photos/spring-yellow-golden-shower-flower-4936511/
+# https://www.iconfinder.com/icons/1608639/code_icon
+
+[params]
+  env = "production"
+  recent_posts_number = 5
+  favicon = "favicon.ico"
+  featured_image = "/images/hero.jpg"

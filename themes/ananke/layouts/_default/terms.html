@@ -1,0 +1,26 @@
+{{ define "main" }}
+    {{ $data := .Data }}
+  {{ with .Content }}
+    <article class="cf pa3 pa4-m pa4-l">
+      <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links mid-gray">
+        {{ . }}
+      </div>
+    </article>
+  {{ end }}
+  <div class="mw8 center">
+    <section>
+      {{ range $key, $value := .Data.Terms }}
+        <h1 class="mv4 mh3 mh4-l">
+          <a href="{{ "/" | relLangURL }}{{ $.Data.Plural | urlize }}/{{ $key | urlize }}" class="black dim no-underline">
+            {{ .Page.Title }}
+          </a>
+        </h1>
+        {{ range $value.Pages }}
+          <div class="relative mb3 mb4-l bg-white br0 br3-ns card">
+            {{ partial "summary.html" . }}
+          </div>
+        {{ end }}
+      {{ end }}
+    </section>
+  </div>
+{{ end }}
