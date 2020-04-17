@@ -1,6 +1,6 @@
 p code,
-ul > code,
-ol > code,
+ul li code,
+ol li code,
 table code {
   padding: .15em .3em;
   margin: 0;
