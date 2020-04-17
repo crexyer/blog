@@ -12,7 +12,7 @@ tags:
   - FPGA
 ---
 
-本文主要转述和翻译了 [SystemVerilog 语言参考手册](https://ieeexplore.ieee.org/document/8299595)中 11.6 至 11.8 章节中的内容，以解释表达式的位宽和类型是如何确定和参与运算的，与 C 语言不同，Verilog 中的表达式在运算中必须考虑位宽与类型，同时还存在中间结果，其中又包含各种扩位和类型转换规则，深入的学习 Verilog 语言有必要了解这些以规避语法陷阱。本文主要针对 SystemVerilog，但对于 Verilog HDL，大部分规则也同样适用。
+本文主要介绍了 SystemVerilog 中表达式的位宽和类型是如何确定和参与运算的，与 C 语言不同，Verilog 中的表达式在运算中必须考虑位宽与类型，同时还存在中间结果，其中又包含各种扩位和类型转换规则，深入的学习 Verilog 语言有必要了解这些以规避语法陷阱。本文主要针对 SystemVerilog，但对于 Verilog HDL，大部分规则也同样适用。
 
 <!--more-->
 
@@ -117,7 +117,7 @@ initial begin
    a = 4'hF;
    b = 6'hA;
    $display("a * b = %h", a * b); // expression size is self-determined
-   c = {a ** b};                  // expression a**b is self-determined
+   c = {a ** b};                  // expression a ** b is self-determined
                                   // due to concatenation operator {}
    $display("a ** b = %h", c);
    c = a ** b;                    // expression size is determined by c
